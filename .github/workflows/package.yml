@@ -67,5 +67,5 @@ jobs:
           gh release create "$RELEASE_TAG" "${archives[0]}" \
             --verify-tag \
             --generate-notes \
-            --title "Firefox Tab Search $RELEASE_TAG (unsigned)" \
+            --title "Quick Tab Search $RELEASE_TAG (unsigned)" \
             --notes "This ZIP is unsigned. It is intended for review or Mozilla Add-ons submission and is not a normal Firefox installation package."

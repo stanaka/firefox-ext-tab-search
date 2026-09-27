@@ -1,4 +1,4 @@
-# Firefox Tab Search
+# Quick Tab Search
 
 Search, switch, close, and restore tabs across Firefox windows from one popup. Find open tabs by title, URL, or tab group name, or bring back recently closed tabs and windows.
 
@@ -7,13 +7,13 @@ Requires **Firefox 147 or later** on desktop.
 > [!IMPORTANT]
 > **Required shortcut setup: remove Firefox’s built-in Add-ons shortcut.**
 >
-> Firefox already uses **Ctrl+Shift+A** (**Command+Shift+A on macOS**) to open Add-ons. Clear that built-in assignment so the same shortcut can open Firefox Tab Search:
+> Firefox already uses **Ctrl+Shift+A** (**Command+Shift+A on macOS**) to open Add-ons. Clear that built-in assignment so the same shortcut can open Quick Tab Search:
 >
 > 1. Type `about:keyboard` in Firefox’s address bar and press Enter.
 > 2. Find the built-in **Add-ons** command assigned to `Ctrl+Shift+A` (`Command+Shift+A` on macOS).
 > 3. Click **Clear** for that command.
 >
-> Keep **Firefox Tab Search’s own shortcut** assigned. If the popup still does not open, go to `about:addons` → gear menu → **Manage Extension Shortcuts** and check that Firefox Tab Search uses the shortcut above.
+> Keep **Quick Tab Search’s own shortcut** assigned. If the popup still does not open, go to `about:addons` → gear menu → **Manage Extension Shortcuts** and check that Quick Tab Search uses the shortcut above.
 >
 > See [Mozilla’s keyboard shortcut customization instructions](https://support.mozilla.org/en-US/kb/customize-keyboard-shortcuts-firefox) for details. You can still open Add-ons by entering `about:addons` in the address bar.
 
@@ -29,9 +29,9 @@ The popup in light and dark mode, showing open tabs, tab group labels, and recen
 
 | Light mode | Dark mode |
 | --- | --- |
-| ![Firefox Tab Search in light mode, with open tabs, a Developer group label, and recently closed tabs](docs/screenshots/tab-search-light.png) | ![Firefox Tab Search in dark mode, with open tabs, a Developer group label, and recently closed tabs](docs/screenshots/tab-search-dark.png) |
+| ![Quick Tab Search in light mode, with open tabs, a Developer group label, and recently closed tabs](docs/screenshots/tab-search-light.png) | ![Quick Tab Search in dark mode, with open tabs, a Developer group label, and recently closed tabs](docs/screenshots/tab-search-dark.png) |
 
-## Using Firefox Tab Search
+## Using Quick Tab Search
 
 Open the popup using the extension’s **Search tabs** button or **Ctrl+Shift+A** (**Command+Shift+A on macOS**) after completing the shortcut setup above. Start typing to search tab titles, URLs, and open tab group names.
 
@@ -109,11 +109,11 @@ The package command overwrites an existing archive with the same name. It does n
 
 GitHub Actions runs `npm run check` for pull requests (including Dependabot pull requests) and pushes to `main`. Dependabot checks npm dependencies and GitHub Actions weekly and opens update pull requests for review.
 
-To publish an unsigned archive, update the version in `package.json`, `package-lock.json`, and `public/manifest.json`, then merge those changes into `main`. After CI passes, tag that commit with the matching `v` prefix and push the tag. For example, for version `0.1.0`:
+To publish an unsigned archive, update the version in `package.json`, `package-lock.json`, and `public/manifest.json`, then merge those changes into `main`. After CI passes, tag that commit with the matching `v` prefix and push the tag. For example, for version `0.1.1`:
 
 ```sh
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.1.1
+git push origin v0.1.1
 ```
 
 The tag workflow checks that the tag matches both version fields, runs the full checks, packages the extension, and publishes the ZIP as a GitHub release asset. **The ZIP is unsigned:** it is for review or Mozilla Add-ons submission and cannot be installed as a normal Firefox release. A release requires Mozilla signing before normal installation.

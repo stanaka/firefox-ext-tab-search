@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Firefox Tab Search",
-  "version": "0.1.0",
+  "name": "Quick Tab Search",
+  "version": "0.1.1",
   "description": "Search, switch, close, and restore tabs across Firefox windows.",
   "permissions": ["tabs", "sessions", "tabGroups"],
   "content_security_policy": {
