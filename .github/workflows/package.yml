@@ -1,0 +1,56 @@
+name: Package and release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: mise.toml
+          cache: npm
+      - name: Verify release tag
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+
+          const packageVersion = JSON.parse(readFileSync('package.json', 'utf8')).version;
+          const manifestVersion = JSON.parse(readFileSync('public/manifest.json', 'utf8')).version;
+          const tag = process.env.RELEASE_TAG;
+
+          if (packageVersion !== manifestVersion || tag !== `v${packageVersion}`) {
+            console.error(`Release tag ${tag} must match package.json and public/manifest.json versions (${packageVersion}, ${manifestVersion}).`);
+            process.exit(1);
+          }
+          NODE
+      - run: npm ci
+      - run: npm run check
+      - run: npm run package
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          shopt -s nullglob
+          archives=(web-ext-artifacts/*.zip)
+          if (( ${#archives[@]} != 1 )); then
+            echo "Expected exactly one extension ZIP, found ${#archives[@]}." >&2
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" "${archives[0]}" \
+            --verify-tag \
+            --generate-notes \
+            --title "Firefox Tab Search $RELEASE_TAG (unsigned)" \
+            --notes "This ZIP is unsigned. It is intended for review or Mozilla Add-ons submission and is not a normal Firefox installation package."

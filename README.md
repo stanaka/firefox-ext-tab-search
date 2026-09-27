@@ -105,6 +105,19 @@ For editing, keep `npm run dev` running in a separate terminal. It rebuilds file
 
 The package command overwrites an existing archive with the same name. It does not sign or publish the extension; a normal release installation requires Mozilla signing.
 
+### CI and releases
+
+GitHub Actions runs `npm run check` for pull requests (including Dependabot pull requests) and pushes to `main`. Dependabot checks npm dependencies and GitHub Actions weekly and opens update pull requests for review.
+
+To publish an unsigned archive, update the version in `package.json`, `package-lock.json`, and `public/manifest.json`, then merge those changes into `main`. After CI passes, tag that commit with the matching `v` prefix and push the tag. For example, for version `0.1.0`:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The tag workflow checks that the tag matches both version fields, runs the full checks, packages the extension, and publishes the ZIP as a GitHub release asset. **The ZIP is unsigned:** it is for review or Mozilla Add-ons submission and cannot be installed as a normal Firefox release. A release requires Mozilla signing before normal installation.
+
 ## License
 
 [MIT](LICENSE) © 2026 Shinji Tanaka.
