@@ -1,4 +1,4 @@
 # Pins the toolchain for local development. CI reads the Node version from
-# this file too (setup-node's node-version-file), so change it here only.
+# this file before calling setup-node, so change it here only.
 [tools]
 node = "24.21.0"
