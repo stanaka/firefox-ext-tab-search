@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Firefox Tab Search",
+  "version": "0.1.0",
+  "description": "Search, switch, close, and restore tabs across Firefox windows.",
+  "permissions": ["tabs", "sessions", "tabGroups"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data:"
+  },
+  "action": {
+    "default_title": "Search tabs",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/tab-search.svg",
+      "32": "icons/tab-search.svg"
+    },
+    "theme_icons": [
+      { "light": "icons/tab-search-dark.svg", "dark": "icons/tab-search-light.svg", "size": 16 },
+      { "light": "icons/tab-search-dark.svg", "dark": "icons/tab-search-light.svg", "size": 32 }
+    ]
+  },
+  "icons": {
+    "16": "icons/tab-search.svg",
+    "32": "icons/tab-search.svg"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Ctrl+Shift+A" },
+      "description": "Search tabs"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{ddd7692c-7b80-42a8-b84a-4e233ab5e9bb}",
+      "data_collection_permissions": {
+        "required": ["none"]
+      },
+      "strict_min_version": "147.0"
+    }
+  }
+}

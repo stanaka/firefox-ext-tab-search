@@ -1,0 +1,44 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; font-size: 14px; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 600px; background: Canvas; color: CanvasText; }
+.popup { display: flex; flex-direction: column; height: 560px; }
+.search-header { display: flex; align-items: center; gap: 9px; position: sticky; top: 0; z-index: 1; padding: 12px; border-bottom: 1px solid color-mix(in srgb, CanvasText 16%, transparent); background: Canvas; }
+.search-icon { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; opacity: .7; }
+input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: inherit; font: inherit; font-size: 16px; }
+kbd { border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: 4px; padding: 1px 5px; color: color-mix(in srgb, CanvasText 60%, transparent); font: 11px system-ui; }
+.results { overflow-y: auto; padding: 6px; }
+.section-title { margin: 10px 8px 5px; color: color-mix(in srgb, CanvasText 62%, transparent); font-size: 11px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.result { display: flex; align-items: center; gap: 11px; min-height: 54px; padding: 7px 8px; border-radius: 8px; cursor: pointer; }
+.result[aria-selected="true"], .result:hover { background: color-mix(in srgb, Highlight 18%, transparent); }
+.result:focus-visible { outline: 2px solid Highlight; outline-offset: -2px; }
+.favicon { flex: none; width: 18px; height: 18px; object-fit: contain; }
+.copy { min-width: 0; display: grid; gap: 2px; flex: 1; }
+.title-line { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.title, .subtitle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.title { min-width: 0; flex: 1; font-weight: 500; }
+.group-label { flex: 0 1 auto; max-width: 10rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--group-color) 48%, transparent); border-radius: 999px; padding: 1px 6px; background: color-mix(in srgb, var(--group-color) 16%, transparent); color: var(--group-color); font-size: 11px; font-weight: 650; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.group-label[data-group-color="blue"] { --group-color: #0060df; }
+.group-label[data-group-color="cyan"] { --group-color: #00736c; }
+.group-label[data-group-color="grey"] { --group-color: #5b5b66; }
+.group-label[data-group-color="green"] { --group-color: #2b7a0b; }
+.group-label[data-group-color="orange"] { --group-color: #b35c00; }
+.group-label[data-group-color="pink"] { --group-color: #c50084; }
+.group-label[data-group-color="purple"] { --group-color: #722291; }
+.group-label[data-group-color="red"] { --group-color: #c50042; }
+.group-label[data-group-color="yellow"] { --group-color: #735c00; }
+.subtitle { color: color-mix(in srgb, CanvasText 61%, transparent); font-size: 12px; }
+.close { flex: none; width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; font-size: 24px; line-height: 22px; opacity: .72; }.close:hover, .close:focus-visible { background: color-mix(in srgb, CanvasText 14%, transparent); opacity: 1; }
+.status, .empty { margin: 18px; color: color-mix(in srgb, CanvasText 68%, transparent); text-align: center; }.status:empty { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (prefers-color-scheme: dark) {
+  .group-label[data-group-color="blue"] { --group-color: #80ebff; }
+  .group-label[data-group-color="cyan"] { --group-color: #54ffbd; }
+  .group-label[data-group-color="grey"] { --group-color: #bfbfc9; }
+  .group-label[data-group-color="green"] { --group-color: #80eb70; }
+  .group-label[data-group-color="orange"] { --group-color: #ffbd4f; }
+  .group-label[data-group-color="pink"] { --group-color: #ff9ad8; }
+  .group-label[data-group-color="purple"] { --group-color: #d9bfff; }
+  .group-label[data-group-color="red"] { --group-color: #ff9aa2; }
+  .group-label[data-group-color="yellow"] { --group-color: #ffe900; }
+}

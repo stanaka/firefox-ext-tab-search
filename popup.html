@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search tabs</title>
+  </head>
+  <body>
+    <main class="popup" aria-label="Tab search">
+      <header class="search-header">
+        <label class="sr-only" for="tab-search">Search tabs</label>
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="search-icon"><path d="m20 20-4.5-4.5m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" /></svg>
+        <input id="tab-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tabs" aria-controls="results" aria-activedescendant="" />
+        <kbd aria-hidden="true">Esc</kbd>
+      </header>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <div id="results" class="results" role="listbox" aria-label="Matching tabs"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
